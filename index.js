@@ -1,28 +1,28 @@
+// invoke required npm packages
+const inquirer = require("inquirer");
+const fs = require("fs");
+
 // import classes from './lib' folder
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
-// import required npm packages
-const inquirer = require("inquirer");
-const fs = require("fs");
-
 // import javascript file for creating HTML
 const createHTML = require("./src/createHTML");
 
-var userInputArray = [];
+var InputArray = [];
 
-// main questions to ask the user selecting a role under the list
+// main question to ask the user selecting a role or finish selection
 const questionMain = [
     {
         type: 'list',
         name: 'role',
-        message: 'Please select a role to add for your project team:',
-        choices: ['Project Manager', 'Software Engineer', 'Intern', 'finished']
+        message: 'Please select a role to add to your project team:',
+        choices: ['Software Engineer', 'Intern', 'Finished']
     }
 ];
 
-// manager questions
+// questions when adding the project manager's infomation
 const questionManager = [
     {
         type: 'input',
@@ -42,12 +42,12 @@ const questionManager = [
     {
         type: 'input',
         name: 'office',
-        message: "What is the Project Manager's office number?"
+        message: "What is the Project Manager's office phone number?"
     }
 
 ];
 
-// engineer questions
+// questions when adding the engineer's infomation
 const questionEngineer = [
     {
         type: 'input',
@@ -72,78 +72,79 @@ const questionEngineer = [
 
 ];
 
-// intern questions
+// questions when adding the intern's infomation
 const questionIntern = [
     {
         type: 'input',
         name: 'name',
-        message: "What is Intern's first name?",
+        message: "What is the Intern's name?",
     },
     {
         type: 'number',
         name: 'id',
-        message: 'What is their id number?',
+        message: "What is the Intern's ID number?",
     },
     {
         type: 'input',
         name: 'email',
-        message: 'What is their email?',
+        message: "What is the Intern's email?",
     },
     {
         type: 'input',
         name: 'school',
-        message: 'What school do they attend?'
+        message: "What is the Intern's school name?",
     }
 ];
 
 
-
-// function to initialize app
 function init() {
-    // prompt questions
-    inquirer.prompt(questions).then(answers => {
-        // if done adding employees generate team
-        if (answers.role === 'Im all done!') {
-            console.log(answersArr);
-            generateTeam();
-            return;
+    inquirer
+        // create project manager information
+        .prompt(questionManager)
+        .then(response => {
+            const manager = new Manager(response.name, response.id, response.email, response.office);
+            InputArray.push(manager);
+            init();
+        })
+
+    inquirer
+        .prompt(questionMain)
+        .then(response => {
+            if (response.role === 'Software Engineer') {
+                inquirer.prompt(questionEngineer).then(response => {
+                    const engineer = new Engineer(response.name, response.id, response.email, response.github);
+                    InputArray.push(engineer);
+                    init();
+                })
+            }
+            // develop intern information
+            if (response.role === 'Intern') {
+                inquirer.prompt(questionIntern).then(response => {
+                    const intern = new Intern(response.name, response.id, response.email, response.school);
+                    InputArray.push(intern);
+                    init();
+                })
+            }
+            // finish creating team when selecting 'finished'
+            if (response.role === 'Finished') {
+                console.log(InputArray);
+                createTeam();
+                return;
+            }
         }
-        // create manager info
-        if (answers.role === 'Manager') {
-            inquirer.prompt(manager).then(answers => {
-                const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
-                answersArr.push(manager);
-                init();
-            })
-        }
-        // create engineer info
-        if (answers.role === 'Engineer') {
-            inquirer.prompt(engineer).then(answers => {
-                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-                answersArr.push(engineer);
-                init();
-            })
-        }
-        // create intern info
-        if (answers.role === 'Intern') {
-            inquirer.prompt(intern).then(answers => {
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-                answersArr.push(intern);
-                init();
-            })
-        }
-    })
+        )
 };
 
-// Function call to initialize app
+// create index.html file with data input
+function createTeam() {
+    fs.writeFileSync('./dist/index.html', createHTML(InputArray), "utf-8");
+    console.log('Your project team has been created sucessfully!')
+};
+
 init();
 
 
-// to write the file of the new team members
-function generateTeam() {
-    fs.writeFileSync('./dist/generatedTeam.html', generateHTML(answersArr), "utf-8");
-    console.log('Dream Team created!')
-};
+
 
 
 
