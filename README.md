@@ -56,3 +56,18 @@ https://github.com/lzh1990214
 zli02@alumni.risd.edu
 
 ## Screenshots <a id="Screenshots"></a>
+
+### Jest test results
+![jest test results](./assets/img/jest.png)
+
+### Inquirer application
+![user input](./assets/img/app-01.png)
+![generated input data](./assets/img/app-02.png)
+
+### Desktop Display
+![desktop page](./assets/img/web-fullscreen.png)
+
+### Mobile Responsive Display
+![mobile page](./assets/img/web-mobile.png)
+
+
