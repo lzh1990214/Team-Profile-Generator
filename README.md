@@ -12,6 +12,7 @@ The project is to build a Node.js command-line application that takes in informa
 5. [Tests](#Tests)
 6. [Questions](#Questions)
 7. [Screenshots](#Screenshots)
+8. [Walkthrough Video](#Walkthrough)
 
 
 ## Installation <a id="Installation"></a>
@@ -55,6 +56,7 @@ https://github.com/lzh1990214
 ### Email
 zli02@alumni.risd.edu
 
+
 ## Screenshots <a id="Screenshots"></a>
 
 ### Jest test results
@@ -71,3 +73,5 @@ zli02@alumni.risd.edu
 ![mobile page](./assets/img/web-mobile.png)
 
 
+## Walkthrough Video <a id="Walkthrough"></a>
+https://www.youtube.com/watch?v=7i82DiKMiqg
