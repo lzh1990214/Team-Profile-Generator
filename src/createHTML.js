@@ -13,8 +13,8 @@ const createHTML = (InputArray) => {
                                     <i class="fa-solid fa-code"></i>
                                 </div>
                                 <div class="media-content">
-                                    <p class="title is-4">${InputArray[i].name}</p>
-                                    <p class="subtitle is-6">${InputArray[i].getRole()}</p>
+                                    <p class="title is-4 has-text-link">${InputArray[i].name}</p>
+                                    <p class="subtitle is-6 has-text-link">${InputArray[i].getRole()}</p>
                                     <ul>
                                         <li>Employee ID: ${InputArray[i].id}</li>
                                         <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
@@ -37,8 +37,8 @@ const createHTML = (InputArray) => {
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
                                 <div class="media-content">
-                                    <p class="title is-4">${InputArray[i].name}</p>
-                                    <p class="subtitle is-6">${InputArray[i].getRole()}</p>
+                                    <p class="title is-4 has-text-link">${InputArray[i].name}</p>
+                                    <p class="subtitle is-6 has-text-link">${InputArray[i].getRole()}</p>
                                     <ul>
                                         <li>Employee ID: ${InputArray[i].id}</li>
                                         <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
@@ -68,9 +68,11 @@ const createHTML = (InputArray) => {
     </head>
 
     <body>
-        <header id="header" class="hero">
+        <header id="header" class="hero is-link mb-5">
             <div class="hero-body">
-                <h1 class="title">Project Team</h1>
+                <div class="container has-text-centered">
+                    <h1 class="title">My Project Team</h1>
+                </div>
             </div>
         </header>
 
@@ -84,8 +86,8 @@ const createHTML = (InputArray) => {
                                 <i class="fa-solid fa-mug-hot "></i>
                             </div>
                             <div class="media-content">
-                                <p class="title is-4">${InputArray[0].name}</p>
-                                <p class="subtitle is-6">Project Manager</p>
+                                <p class="title is-4 has-text-link">${InputArray[0].name}</p>
+                                <p class="subtitle is-6 has-text-link">Project Manager</p>
                                 <ul>
                                     <li>Employee ID: ${InputArray[0].id}</li>
                                     <li><a href="mailto:${InputArray[0].email}">Email: ${InputArray[0].email}</a></li>
