@@ -61,9 +61,9 @@ const createHTML = (InputArray) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile</title>
-        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" href="../src/reset.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="../src/style.css" />
         <script src="https://kit.fontawesome.com/114cf67037.js" crossorigin="anonymous"></script>
     </head>
 
