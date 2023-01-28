@@ -1,73 +1,57 @@
-
 const createHTML = (InputArray) => {
     let newEmployeeCard = '';
-    let employeeCard = [];
-
-    const managerHTML = `
-    
-    `
-
-
-    const engineerHTML = `
-    <section class="column is-4">
-        <div class="card">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">${InputArray[i].name}</p>
-                        <p class="subtitle is-6">${InputArray[i].getRole()}</p>
-                        <ul>
-                            <li>Employee ID: ${InputArray[i].id}</li>
-                            <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
-                            <li><a href="https://github.com/${InputArray[i].github}">GitHub: ${InputArray[i].github}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>`;
-
-    const internHTML = `
-    <section class="column is-4">
-        <div class="card">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">${InputArray[i].name}</p>
-                        <p class="subtitle is-6">${InputArray[i].getRole()}</p>
-                        <ul>
-                            <li>Employee ID: ${InputArray[i].id}</li>
-                            <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
-                            <li>School: ${InputArray[i].school}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>`;
-
-
+    // use for loop to switch between Engineer and Intern object and extract user input data
     for (let i = 1; i < InputArray.length; i++) {
         switch (InputArray[i].getRole()) {
             case 'Software Engineer':
-                newEmployeeCard += engineerHTML;
-                employeeCard.push(newEmployeeCard)
+                newEmployeeCard += `
+                <section class="column is-4">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">${InputArray[i].name}</p>
+                                    <p class="subtitle is-6">${InputArray[i].getRole()}</p>
+                                    <ul>
+                                        <li>Employee ID: ${InputArray[i].id}</li>
+                                        <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
+                                        <li><a href="https://github.com/${InputArray[i].github}">GitHub: ${InputArray[i].github}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
                 break;
 
             case 'Intern':
-                newEmployeeCard += internHTML;
-                employeeCard.push(newEmployeeCard)
+                newEmployeeCard += `
+                <section class="column is-4">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">${InputArray[i].name}</p>
+                                    <p class="subtitle is-6">${InputArray[i].getRole()}</p>
+                                    <ul>
+                                        <li>Employee ID: ${InputArray[i].id}</li>
+                                        <li><a href="mailto:${InputArray[i].email}">Email: ${InputArray[i].email}</a></li>
+                                        <li>School: ${InputArray[i].school}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
                 break;
         }
     };
-
-
 
     return `
     <!DOCTYPE html>
@@ -105,17 +89,17 @@ const createHTML = (InputArray) => {
                                 <ul>
                                     <li>Employee ID: ${InputArray[0].id}</li>
                                     <li><a href="mailto:${InputArray[0].email}">Email: ${InputArray[0].email}</a></li>
-                                    <li>Office Number: ${InputArray[0].office}</li>
+                                    <li>Office Number: ${InputArray[0].officeNumber}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            ${employeeCard}
+            ${newEmployeeCard}
         </section>
     </body>
-    </html>`
+    </html>`;
 }
 
-module.exports = createHTML();
+module.exports = createHTML;

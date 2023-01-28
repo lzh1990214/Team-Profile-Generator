@@ -80,7 +80,7 @@ const questionIntern = [
         message: "What is the Intern's name?",
     },
     {
-        type: 'number',
+        type: 'input',
         name: 'id',
         message: "What is the Intern's ID number?",
     },
@@ -96,17 +96,19 @@ const questionIntern = [
     }
 ];
 
-
-function init() {
+function initManager() {
+    // input project manager information first
     inquirer
-        // create project manager information
         .prompt(questionManager)
         .then(response => {
             const manager = new Manager(response.name, response.id, response.email, response.office);
             InputArray.push(manager);
             init();
         })
+};
 
+
+function init() {
     inquirer
         .prompt(questionMain)
         .then(response => {
@@ -138,10 +140,11 @@ function init() {
 // create index.html file with data input
 function createTeam() {
     fs.writeFileSync('./dist/index.html', createHTML(InputArray), "utf-8");
-    console.log('Your project team has been created sucessfully!')
+    console.log('Your project team has been created successfully!')
 };
 
-init();
+initManager();
+
 
 
 
