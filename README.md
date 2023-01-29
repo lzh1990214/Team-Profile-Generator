@@ -74,4 +74,5 @@ zli02@alumni.risd.edu
 
 
 ## Walkthrough Video <a id="Walkthrough"></a>
-https://www.youtube.com/watch?v=7i82DiKMiqg
+https://youtu.be/qLSYfeRTSNo
+
